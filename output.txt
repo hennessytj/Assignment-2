@@ -1,0 +1,125 @@
+ID         Customer Name
+                Trait      Value
+11111      BOB WIRE
+                GENDER     M
+                EXERCISE   BIKE
+                EXERCISE   HIKE
+                SMOKING    N
+22222      MELBA TOAST
+                GENDER     F
+                BOOK       COOKING
+33333      CRYSTAL BALL
+                SMOKING    N
+                GENDER     F
+                EXERCISE   JOG
+                EXERCISE   YOGA
+33355      TED E BARR
+                MOVIE      ACTION
+                GENDER     M
+                MOVIE      HORROR
+                EXERCISE   HIKE
+33366      REED BOOK
+                BOOK       SCIFI
+                BOOK       DRAMA
+                BOOK       MYSTERY
+                BOOK       HORROR
+                BOOK       TRAVEL
+                BOOK       ROMANCE
+11122      AVA KASHUN
+                BOOK       TRAVEL
+                MOVIE      ACTION
+                EXERCISE   HIKE
+                EXERCISE   BIKE
+                EXERCISE   RUN
+                EXERCISE   GOLF
+                EXERCISE   JOG
+                EXERCISE   DANCE
+                MOVIE      ROMANCE
+                SMOKING    N
+                GENDER     F
+111000     ROCK D BOAT
+111010     JIMMY LOCK
+                GENDER     M
+                BOOK       TRAVEL
+                MOVIE      ACTION
+555111     SPRING WATER
+                EXERCISE   SWIM
+                GENDER     F
+                SMOKING    N
+666666     E VILLE
+                SMOKING    Y
+                GENDER     M
+                EXERCISE   BIKE
+                MOVIE      HORROR
+                BOOK       HORROR
+Query # 1: SMOKING = Y
+	SMOKING Y = 
+	Query Result:
+	ID      Customer Name       
+	666666  E VILLE             
+Query # 2: SMOKING = Y AND GENDER = F 
+	SMOKING Y = GENDER F = 
+	AND 
+	Query Result:
+	ID      Customer Name       
+Query # 3: SMOKING = N AND ( EXERCISE = YOGA OR EXERCISE = BIKE )
+	SMOKING N = EXERCISE YOGA = 
+	EXERCISE BIKE = OR AND 
+	Query Result:
+	ID      Customer Name       
+	11111   BOB WIRE            
+	33333   CRYSTAL BALL        
+	11122   AVA KASHUN          
+Query # 4: GENDER = M AND EXERCISE NOTANY BIKE
+	GENDER M = EXERCISE BIKE NOTANY 
+	AND 
+	Query Result:
+	ID      Customer Name       
+	33355   TED E BARR          
+	111010  JIMMY LOCK          
+Query # 5: SMOKING = Y AND EXERCISE = BIKE OR EXERCISE = YOGA
+	SMOKING Y = EXERCISE BIKE = 
+	AND EXERCISE YOGA = OR 
+	Query Result:
+	ID      Customer Name       
+	33333   CRYSTAL BALL        
+	666666  E VILLE             
+Query # 6: ( BOOK = SCIFI )
+	BOOK SCIFI = 
+	Query Result:
+	ID      Customer Name       
+	33366   REED BOOK           
+Query # 7: BOOK = TRAVEL
+	BOOK TRAVEL = 
+	Query Result:
+	ID      Customer Name       
+	33366   REED BOOK           
+	11122   AVA KASHUN          
+	111010  JIMMY LOCK          
+Query # 8: BOOK NOTANY COOKING
+	BOOK COOKING NOTANY 
+	Query Result:
+	ID      Customer Name       
+	11111   BOB WIRE            
+	33333   CRYSTAL BALL        
+	33355   TED E BARR          
+	33366   REED BOOK           
+	11122   AVA KASHUN          
+	111000  ROCK D BOAT         
+	111010  JIMMY LOCK          
+	555111  SPRING WATER        
+	666666  E VILLE             
+Query # 9: ( ( ( BOOK ONLY ROMANCE ) ) )
+	BOOK ROMANCE ONLY 
+	Query Result:
+	ID      Customer Name       
+Query # 10: ( ( SMOKING = N )
+	Warning: missing right parenthesis
+Query # 11: ( ( SMOKING = Y ) AND ( BOOK ONLY TRAVEL ) AND ( EXERCISE = HIKE ) )
+	SMOKING Y = BOOK TRAVEL ONLY 
+	AND EXERCISE HIKE = AND 
+	Query Result:
+	ID      Customer Name       
+Query # 12: ( GENDER = F ) AND EXERCISE = HIKE )
+	Warning: missing left parenthesis
+
